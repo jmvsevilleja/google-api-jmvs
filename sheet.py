@@ -5,12 +5,8 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 
-# If modifying these scopes, delete the file token.pickle.
-# SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
-# The ID and range of a sample spreadsheet.
 SPREADSHEET_ID = '1UTJXmS_sBIY9X-GaiIqS_IdtlLO4flHP32nQIsiQ6Hk'
 RAW_RANGE = 'Raw Data!A:C'
 RESULT_RANGE = 'Result!A:A'
