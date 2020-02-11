@@ -135,13 +135,13 @@ def index():
             document = gdoctableapp.GetTables(resource)
 
             # Reset Table
-            # if document['tables']:
-            #     resource = {
-            #         "oauth2": creds,
-            #         "documentId": DOCUMENT_ID,
-            #         "tableIndex": 0
-            #     }
-            #     gdoctableapp.DeleteTable(resource)
+            if document['tables']:
+                resource = {
+                    "oauth2": creds,
+                    "documentId": DOCUMENT_ID,
+                    "tableIndex": 0
+                }
+                gdoctableapp.DeleteTable(resource)
 
             resource = {
                 "oauth2": creds,
