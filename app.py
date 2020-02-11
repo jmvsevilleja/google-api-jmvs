@@ -83,7 +83,7 @@ def index():
                         else:
                             columns.append(rows)
                             if len(values) == (row+1):
-                                docs.append(columns)
+                                # docs.append(columns)
 
             resource = {
                 "majorDimension": "ROWS",
