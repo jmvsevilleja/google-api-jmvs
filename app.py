@@ -82,6 +82,8 @@ def index():
                             columns = []
                         else:
                             columns.append(rows)
+                            if len(values) == (row+1):
+                                docs.append(columns)
 
             resource = {
                 "majorDimension": "ROWS",
@@ -89,15 +91,15 @@ def index():
             }
 
             # Reset Sheet
-            service.spreadsheets().values().clear(spreadsheetId=SPREADSHEET_ID,
-                                                  range=RESULT_RANGE).execute()
+            # service.spreadsheets().values().clear(spreadsheetId=SPREADSHEET_ID,
+            #                                       range=RESULT_RANGE).execute()
 
-            service.spreadsheets().values().update(
-                spreadsheetId=SPREADSHEET_ID,
-                range=RESULT_RANGE,
-                body=resource,
-                valueInputOption="USER_ENTERED"
-            ).execute()
+            # service.spreadsheets().values().update(
+            #     spreadsheetId=SPREADSHEET_ID,
+            #     range=RESULT_RANGE,
+            #     body=resource,
+            #     valueInputOption="USER_ENTERED"
+            # ).execute()
 
         # elif request.form.get('docs') == 'Process Google Docs':
 
@@ -133,13 +135,13 @@ def index():
             document = gdoctableapp.GetTables(resource)
 
             # Reset Table
-            if document['tables']:
-                resource = {
-                    "oauth2": creds,
-                    "documentId": DOCUMENT_ID,
-                    "tableIndex": 0
-                }
-                gdoctableapp.DeleteTable(resource)
+            # if document['tables']:
+            #     resource = {
+            #         "oauth2": creds,
+            #         "documentId": DOCUMENT_ID,
+            #         "tableIndex": 0
+            #     }
+            #     gdoctableapp.DeleteTable(resource)
 
             resource = {
                 "oauth2": creds,
@@ -149,7 +151,7 @@ def index():
                 "createIndex": 1,
                 "values": docs
             }
-            gdoctableapp.CreateTable(resource)
+            # gdoctableapp.CreateTable(resource)
             message = 'Google Sheet and Docs Processed. Please see the links below'
         else:
             # pass # unknown
