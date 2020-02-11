@@ -4,11 +4,10 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from gdoctableapppy import gdoctableapp
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/documents']
-
-# The ID of a sample document.
 DOCUMENT_ID = '18xQzPIpvjLaB2fiDExlAmNH_sSjabeyD1Iq6e56BnkU'
 
 
@@ -56,8 +55,8 @@ def main():
         }
         ]
 
-        result = service.documents().batchUpdate(documentId=DOCUMENT_ID,
-                                                 body={'requests': requests}).execute()
+        service.documents().batchUpdate(documentId=DOCUMENT_ID,
+                                        body={'requests': requests}).execute()
 
     requests = [{
         'insertTable': {
@@ -85,7 +84,7 @@ def main():
     }
     ]
 
-    result = service.documents().batchUpdate(documentId=DOCUMENT_ID,
+   service.documents().batchUpdate(documentId=DOCUMENT_ID,
                                              body={'requests': requests}).execute()
 
 
