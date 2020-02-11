@@ -91,15 +91,15 @@ def index():
             }
 
             # Reset Sheet
-            # service.spreadsheets().values().clear(spreadsheetId=SPREADSHEET_ID,
-            #                                       range=RESULT_RANGE).execute()
+            service.spreadsheets().values().clear(spreadsheetId=SPREADSHEET_ID,
+                                                  range=RESULT_RANGE).execute()
 
-            # service.spreadsheets().values().update(
-            #     spreadsheetId=SPREADSHEET_ID,
-            #     range=RESULT_RANGE,
-            #     body=resource,
-            #     valueInputOption="USER_ENTERED"
-            # ).execute()
+            service.spreadsheets().values().update(
+                spreadsheetId=SPREADSHEET_ID,
+                range=RESULT_RANGE,
+                body=resource,
+                valueInputOption="USER_ENTERED"
+            ).execute()
 
         # elif request.form.get('docs') == 'Process Google Docs':
 
@@ -151,7 +151,7 @@ def index():
                 "createIndex": 1,
                 "values": docs
             }
-            # gdoctableapp.CreateTable(resource)
+            gdoctableapp.CreateTable(resource)
             message = 'Google Sheet and Docs Processed. Please see the links below'
         else:
             # pass # unknown
