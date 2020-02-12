@@ -59,29 +59,30 @@ def index():
             if values:
                 for row in range(len(values)):
 
-                    if values[row]:
-                        rows = ''
-                        for i in range(len(values[row])):
-                            # If customer does not enter anything in the first field it will write "Customer" there in it's place.
-                            if i == 0:
-                                if not values[row][0]:
-                                    rows += 'Customer'
-                                else:
-                                    rows += '%s' % values[row][i].strip()
-
+                    rows = ''
+                    for i in range(len(values[row])):
+                        # If customer does not enter anything in the first field it will write "Customer" there in it's place.
+                        if i == 0:
+                            if not values[row][0]:
+                                rows += 'Customer'
                             else:
-                                rows += '\n%s' % values[row][i].strip()
+                                rows += '%s' % values[row][i].strip()
 
-                        sheets.append([rows])
-
-                        # TODO: You need convert list to numpy array and then reshape:
-
-                        if (row+1) % 3 == 0:
-                            columns.append(rows)
-                            docs.append(columns)
-                            columns = []
                         else:
-                            columns.append(rows)
+                            rows += '\n%s' % values[row][i].strip()
+
+                    sheets.append([rows])
+
+                    # TODO: You need convert list to numpy array and then reshape:
+
+                    columns.append(rows)
+
+                    if (row+1) % 3 == 0:
+                        docs.append(columns)
+                        columns = []
+
+                if columns:
+                    docs.append(columns)
 
             resource = {
                 "majorDimension": "ROWS",
